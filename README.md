@@ -66,3 +66,32 @@ The datasets were provided as part of the TripleTen Data Science Bootcamp.
 ## Conclusion
 
 The project demonstrates an end-to-end machine learning workflow for predicting gold recovery rates using industrial process data.
+
+## Model Selection and Cross-Validation Results
+
+Five-fold cross-validation was used to compare the performance of different regression models.
+
+| Model | Rougher sMAPE | Final sMAPE | Weighted sMAPE |
+|---|---:|---:|---:|
+| Random Forest (100 trees, depth 20) | 2.60 | 5.84 | **5.03** |
+| Random Forest (100 trees, depth 10) | 3.05 | 6.55 | 5.68 |
+| Decision Tree (depth 10) | 3.68 | 7.52 | 6.56 |
+| Decision Tree (depth 5) | 4.51 | 8.03 | 7.15 |
+| Linear Regression | 4.69 | 8.20 | 7.33 |
+
+The Random Forest with 100 trees and a maximum depth of 20 achieved the best cross-validation result, with a weighted sMAPE of 5.03.
+
+The weighted sMAPE is calculated using 25% for rougher recovery and 75% for final recovery. Lower values indicate better model performance.
+
+## Final Test Results
+
+The selected Random Forest model was evaluated on the independent test dataset and compared with a baseline model using median predictions.
+
+| Model | Rougher sMAPE | Final sMAPE | Weighted sMAPE |
+|---|---:|---:|---:|
+| Random Forest | 4.33 | 8.14 | **7.19** |
+| Median Baseline | 4.82 | 8.21 | 7.36 |
+
+The Random Forest achieved a weighted sMAPE of 7.19, slightly outperforming the baseline model (7.36).
+
+This demonstrates that the selected model provides a measurable, although moderate, improvement over a simple baseline approach.
